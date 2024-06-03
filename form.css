@@ -1,0 +1,86 @@
+:root {
+    --fontirs: irs;
+    --fontbahman: bahman;
+    --fontlale: lale;
+    --fontaviny: aviny;
+    --color1: #04aa6d;
+    --color2: #6528e0;
+    --color3: rgb(7 112 112);
+    --color4: rgb(23, 240, 23);
+    --color5: #0c0025;
+    --color6: rgb(1, 1, 54);
+    --color7: #171615;
+    --color8: #1d1615;
+    --color9: #20211a;
+    --color10: #141514;
+    --color11: #0f0616;
+    --color12: #292827;
+    --glasswhite: rgba(255, 255, 255, 0.5);
+    --bg-light: #eee;
+    --bg-dark: #444;
+    --bg-dark-2: #151515;
+  }
+  @font-face {
+    font-family: irs;
+    src: url(IRANSansWeb_Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: lale;
+    src: url(Lalezar-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: bahman;
+    src: url(Bahman\ 1.ttf);
+  }
+  
+  @font-face {
+    font-family: aviny;
+    src: url(aviny.ttf);
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    overflow-x: hidden;
+    background-color: var(--bg-light);
+  }
+
+@media(min-width:300px){
+    #nav-bar {
+        display: flex;
+        justify-content: space-around !important;
+        align-items: center;
+        /* background-color: white; */
+        backdrop-filter: blur(30px);
+        box-shadow: 0 0 30px rgba(227, 228, 237, 0.37);
+        border: 2px solid rgba(255, 255, 255, 0.18);
+        padding: 10px;
+        flex-direction: row !important;
+        position: fixed;
+        width: 100%;
+        /* transform: translateY(183%); */
+        bottom: 0;
+      }
+      .home-icon {
+        width: 9%;
+      }
+      .user-icon {
+        width: 9%;
+      }
+      .cart-icon {
+        width: 9%;
+      }
+      .categories-icon {
+        width: 9%;
+      }
+      .icons {
+        display: flex;
+        justify-content: space-around !important;
+        align-items: center;
+        flex-direction: row !important;
+        direction: rtl;
+      }      
+}
