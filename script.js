@@ -28,7 +28,6 @@ const initSwiper = async (searchText = '') => {
                 <img class="product-image" src="${product.image}" alt="${product.title}">
                 <h3>${product.title}</h3>
                 <p>${product.price + "$"}</p>
-                <button class="viewBtn">مشاهده کامل محصول</button>
                 <br>
             </div>
         `;
@@ -69,12 +68,11 @@ const addOffproducts = async () => {
     const products = await myApis();
     const offProductsDiv = document.querySelector("#off-products .off-products");
     offProductsDiv.innerHTML = ""; // پاک کردن محصولات قبلی
-    const productsToAdd = products.slice(0, 3);
+    const productsToAdd = products.slice(0, 4);
     productsToAdd.forEach(product => {
         const productContent = `
             <div class="off-product">
                 <img class="off-images" src="${product.image}" alt="${product.title}">
-                <p>${product.price + "$"}</p>
             </div>
         `;
         offProductsDiv.insertAdjacentHTML("beforeend", productContent);
@@ -102,9 +100,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 userIcon.addEventListener('click', () => {
-    if (!localStorage.getItem("newkalaEmail")) {
+
         window.location.href = "form.html";
-    }
+    
 });
 
 const startMins = 10;
@@ -128,9 +126,34 @@ function updateCountdown() {
 // show all products if logged in
 const allproducts = document.querySelector("#all-products")
 if(!localStorage.getItem("prokalaEmail")){
-    allproducts.textContent = "ابتدا لاگین کنید"
+    allproducts.textContent = "برا دیدن باقی محصولات وارد حساب کاربری شوید"
+} else{
+    console.log("hi");
 }
 
+// responsive nav
+const homeNav = document.querySelector("#homeNav")
+const formNav = document.querySelector("#formNav")
+const cateNav = document.querySelector("#cateNav")
+const cartNav = document.querySelector("#cartNav")
+// شرط نویسی اگر در صفحه هوم بود
+if(window.location.href.includes("index.html")){
+    homeNav.style.borderBottom = "3px solid white"
+}
+
+
+// close console
+document.addEventListener("copy" , (e)=>{
+    e.preventDefault()
+})
+document.addEventListener("contextmenu" , (e)=>{
+    e.preventDefault()
+})
+window.addEventListener("keydown" , (e)=>{
+    if(e.key === "F12"){
+        e.preventDefault()
+    }
+})
 
 initSwiper();
 addOffproducts();

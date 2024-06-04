@@ -24,6 +24,17 @@
     <title>نیوکالا | ورود</title>
   </head>
   <body>
+    <nav id="res">
+      <div id="nav-res">
+        <ul>
+          <li id="homeNav"><a href="index.html">خانه</a></li>
+          <li id="formNav"><a href="form.html">ورود به حساب کاربری</a></li>
+          <li id="cateNav"><a href="category.html">دسته بندی ها</a></li>
+          <li id="cartNav"><a href="cart.html">سبد خرید</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div id="nav-bar">
       <nav>
         <div class="icons-container">
@@ -37,8 +48,30 @@
       </nav>
     </div>
 
+    <div id="form-container">
+      <div class="form-child">
+        <form>
+          <h1>ورود</h1>
+          <br />
+          <input
+            type="email"
+            placeholder="ایمیل خود را وارد کنید"
+            id="emailInput"
+            oncopy="return false"
+          />
+          <br />
+          <input
+            type="password"
+            placeholder="رمز خود را وارد کنید"
+            id="passwordInput"
+            onpaste="return false"
+          />
+          <br />
+        </form>
+      </div>
+      <button type="button" class="btn btn-primary" id="submitBtn">ورود</button>
+    </div>
 
-   
     <script src="form.js"></script>
   </body>
 </html>
