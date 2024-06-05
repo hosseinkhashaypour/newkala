@@ -68,7 +68,7 @@ const addOffproducts = async () => {
     const products = await myApis();
     const offProductsDiv = document.querySelector("#off-products .off-products");
     offProductsDiv.innerHTML = ""; // پاک کردن محصولات قبلی
-    const productsToAdd = products.slice(0, 4);
+    const productsToAdd = products.slice(0, 3);
     productsToAdd.forEach(product => {
         const productContent = `
             <div class="off-product">
@@ -125,10 +125,57 @@ function updateCountdown() {
 
 // show all products if logged in
 const allproducts = document.querySelector("#all-products")
-if(!localStorage.getItem("prokalaEmail")){
-    allproducts.textContent = "برا دیدن باقی محصولات وارد حساب کاربری شوید"
-} else{
-    console.log("hi");
+if (!localStorage.getItem("newkalaEmail")) {
+    allproducts.textContent = "برای دیدن باقی محصولات وارد حساب کاربری شوید";
+} else {
+    fetch("https://fakestoreapi.com/products")
+        .then(response => response.json())
+        .then(data => {
+            allproducts.innerHTML = ""; // پاک کردن محتوای قبلی
+            data.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'all-products-logged';
+
+
+                const productImage = document.createElement('img');
+                productImage.src = product.image;
+                productImage.alt = product.title;
+                productImage.className = "all-images-logged"
+                const productTitle = document.createElement('h3');
+                productTitle.textContent = product.title;
+                productTitle.className = "product-title"
+
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `قیمت: ${product.price} تومان`;
+
+                const addTocartBtn = document.createElement("button")
+                addTocartBtn.textContent = "افزودن به سبد خرید"
+                addTocartBtn.className = "addTocartBtn"
+                // productInfo
+                addTocartBtn.addEventListener('click', () => {
+                    const productInfo = {
+                        title: product.title,
+                        price: product.price,
+                        image: product.image
+                    };
+
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push(productInfo);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    alert(`${product.title} به سبد خرید افزوده شد.`);
+                });
+
+                productDiv.appendChild(productImage);
+                productDiv.appendChild(productTitle);
+                productDiv.appendChild(productPrice);
+                productDiv.appendChild(addTocartBtn);
+                allproducts.appendChild(productDiv);
+            });
+        })
+        .catch(error => {
+            console.error('خطا در دریافت محصولات:', error);
+           allproducts.textContent = 'خطا در دریافت محصولات. لطفا دوباره تلاش کنید.';
+        });
 }
 
 // responsive nav
@@ -143,17 +190,17 @@ if(window.location.href.includes("index.html")){
 
 
 // close console
-document.addEventListener("copy" , (e)=>{
-    e.preventDefault()
-})
-document.addEventListener("contextmenu" , (e)=>{
-    e.preventDefault()
-})
-window.addEventListener("keydown" , (e)=>{
-    if(e.key === "F12"){
-        e.preventDefault()
-    }
-})
+// document.addEventListener("copy" , (e)=>{
+//     e.preventDefault()
+// })
+// document.addEventListener("contextmenu" , (e)=>{
+//     e.preventDefault()
+// })
+// window.addEventListener("keydown" , (e)=>{
+//     if(e.key === "F12"){
+//         e.preventDefault()
+//     }
+// })
 
 initSwiper();
 addOffproducts();
