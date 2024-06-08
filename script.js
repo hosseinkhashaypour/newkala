@@ -89,7 +89,7 @@ searchInput.addEventListener('input', (e) => {
 const homeIcon = document.querySelector(".home-icon");
 const userIcon = document.querySelector(".user-icon");
 const cartIcon = document.querySelector(".cart-icon");
-const categoryIcon = document.querySelector(".category-icon");
+const categoryIcon = document.querySelector(".categories-icon");
 homeIcon.addEventListener('click', () => {
     window.location.href = "index.html";
 });
@@ -103,6 +103,9 @@ userIcon.addEventListener('click', () => {
 });
 cartIcon.addEventListener("click", () => {
     window.location.href = "cart.html"
+})
+categoryIcon.addEventListener('click' , ()=>{
+    window.location.href = "category.html"
 })
 const startMins = 10;
 let time = startMins * 60; // اصلاح مقدار زمان

@@ -13,7 +13,7 @@ if (window.location.href.includes("cart.html")) {
 const homeIcon = document.querySelector(".home-icon");
 const userIcon = document.querySelector(".user-icon");
 const cartIcon = document.querySelector(".cart-icon");
-const categoryIcon = document.querySelector(".category-icon");
+const categoryIcon = document.querySelector(".categories-icon");
 homeIcon.addEventListener('click', () => {
     window.location.href = "index.html";
 });
@@ -26,7 +26,9 @@ userIcon.addEventListener('click', () => {
 
     window.location.href = "form.html";
 });
-
+categoryIcon.addEventListener('click' , ()=>{
+    window.location.href = "category.html"
+})
 
 // produtcs that they are saved in localstorage
 const produtcsSavedDiv = document.querySelector("#cartProducts")

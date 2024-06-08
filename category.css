@@ -42,17 +42,12 @@
 * {
   box-sizing: border-box;
   font-family: var(--fontirs);
-  flex-direction: column;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow-x: hidden;
-  height: 150vh;
-  background-color: white;
-  font-family: var(--fontirs);
+  background-color: var(--bg-light);
+  user-select: none;
 }
 
 @media (min-width: 300px) {
@@ -91,76 +86,59 @@ body {
     flex-direction: row !important;
     direction: rtl;
   }
-  ul,
-  li {
+  ul , li{
     display: none;
   }
-  #cartProducts,
-  .savedProducts {
+  #header{
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 99%;
-    flex-direction: column;
-    background-color: red;
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin: 5% !important;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
   }
-  #cartProducts {
-    transform: translateY(-40%);
+  #header > h1{
+    font-size: 25px;
   }
-  .saved-image {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
-    width: 50%;
-  }
-  .title,
-  .price {
-    margin: 3%;
-    color: white;
-  }
-  .price::before {
-    content: "تومان";
-  }
-  #buyBtn {
+  #soon{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-  }
-  .buyButton {
-    background-color: red;
-    color: white;
+    background-color: white;
     padding: 10px 20px;
-    border-radius: 20px;
+    margin: 5%;
+    border-radius: 10px;
   }
 }
 
 /* responsive */
-@media (min-width: 700px) {
+@media(min-width:700px){
   #nav-bar {
     display: none;
     /* display: flex;
-      justify-content: space-around !important;
-      align-items: center;
-      /* background-color: white; */
+    justify-content: space-around !important;
+    align-items: center;
+    background-color: white;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 30px rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    padding: 10px;
+    flex-direction: row !important;
+    position: fixed;
+    width: 30%;
+    transform: translateY(183%);
+   bottom: 0;
+   right: 35%; */
   }
   #nav-res {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    top: 2%;
+    top: 0;
     z-index: 1000;
     flex-direction: row;
     color: black;
     font-family: var(--fontirs);
-    width: 86%;
+    width: 100%;
     position: fixed;
-    margin: 2%;
-    right: 5%;
   }
   ul {
     display: flex;
@@ -173,12 +151,9 @@ body {
     overflow: hidden;
     background-color: red;
     width: 100%;
-    position: fixed;
-    margin: 2%;
   }
 
   li {
-    display: block;
     float: right;
   }
 
@@ -197,6 +172,9 @@ body {
     color: black;
     border-radius: 10px;
   }
+  ul , li{
+    display: flex;
+  }
   .home-icon {
     width: 9%;
   }
@@ -209,12 +187,4 @@ body {
   .categories-icon {
     width: 9%;
   }
-  img:hover {
-    transform: scale(1.1);
-  }
-}
-
-img {
-  object-fit: contain;
-  aspect-ratio: 2/4;
 }
