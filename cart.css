@@ -41,15 +41,17 @@
 }
 * {
   box-sizing: border-box;
+  font-family: var(--fontirs);
+  flex-direction: column;
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   overflow-x: hidden;
-  background-color:white;
+  height: 150vh;
+  background-color: white;
   font-family: var(--fontirs);
 }
 
@@ -58,11 +60,11 @@ body {
     display: flex;
     justify-content: space-around !important;
     align-items: center;
-    /* background-color: white; */
-    backdrop-filter: blur(30px);
+    background-color: white;
+    /* backdrop-filter: blur(30px);
     box-shadow: 0 0 30px rgba(227, 228, 237, 0.37);
-    border: 2px solid rgba(255, 255, 255, 0.18);
-    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.18); */
+    /* padding: 10px; */
     flex-direction: row !important;
     position: fixed;
     width: 100%;
@@ -88,78 +90,61 @@ body {
     flex-direction: row !important;
     direction: rtl;
   }
-  #form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 20px;
-    border: 2px solid white;
-    margin: 2%;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    height: 50vh;
-  }
-  h1{
-    font-size: 25px;
-    text-align: center;
-  }
-  input{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130%;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-left: -15%;
-    color: black;
-  }
-  #submitBtn{
-    width: 50%;
-  }
-  #nav-res{
+  ul,
+  li {
     display: none;
   }
-  #userInfo{
+  #cartProducts,
+  .savedProducts {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width : 99%;
+    flex-direction: column;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 5% !important;
+  }
+  #cartProducts {
+    transform: translateY(-40%);
+  }
+  .saved-image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 50%;
+  }
+  .title , .price{
+    margin: 3%;
+    color: white;
+  }
+  .price::before{
+    content: "تومان";
+  }
+  #buyBtn{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: var(--fontirs);
-    background-color: #6528e024;
-    padding: 10px 20px;
-    /* color: white; */
-    border-radius: 10px;
-    height: 50vh;
-    width: 100%;
-    margin: 5%;
   }
-  #userInfo > h2{
-    font-size: 30px;
-  }
-  .emailSpan{
-    font-size: 20px;
-  }
-  .goHomebtn{
-    background-color: var(--color2);
-    padding: 10px 20px;
+  .buyButton{
+    background-color: red;
     color: white;
-    border-radius: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
   }
 }
 
-/* responsive*/
-
-@media(min-width:700px){
+/* responsive */
+@media (min-width: 700px) {
   #nav-bar {
     display: none;
     /* display: flex;
-    justify-content: space-around !important;
-    align-items: center;
-    /* background-color: white; */
+      justify-content: space-around !important;
+      align-items: center;
+      /* background-color: white; */
   }
   #nav-res {
     display: flex;
@@ -174,7 +159,6 @@ body {
     position: fixed;
     margin: 2%;
     right: 5%;
-
   }
   ul {
     display: flex;
@@ -192,6 +176,7 @@ body {
   }
 
   li {
+    display: block;
     float: right;
   }
 
@@ -222,47 +207,13 @@ body {
   .categories-icon {
     width: 9%;
   }
-  img:hover{
+  img:hover {
     transform: scale(1.1);
   }
-  #form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-    padding: 10px 20px;
-    border: 2px solid white;
-    margin: 2%;
-    border-radius: 10px;
-    background-color:  black;
-    color: white;
-    height: 60vh;
-  }
-  h1{
-    font-size: 25px;
-    text-align: center;
-  }
-  input{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130%;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-left: -15%;
-  }
-  #submitBtn{
-    width: 50%;
-  }
-  input{
-    width: 250%;
-    margin-left: -70%;
-    color: black;
-  }
-  input:focus{
-    outline: none;
-    border: 3px solid var(--color2);
-  }
+}
+
+
+img{
+  object-fit: contain;
+  aspect-ratio: 2/4;
 }

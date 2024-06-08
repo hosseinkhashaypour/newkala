@@ -100,11 +100,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 userIcon.addEventListener('click', () => {
-
         window.location.href = "form.html";
-    
 });
-
+cartIcon.addEventListener("click" , ()=>{
+    window.location.href = "cart.html"
+})
 const startMins = 10;
 let time = startMins * 60; // اصلاح مقدار زمان
 const countdownEle = document.querySelector("#off-products > h2");

@@ -56,6 +56,35 @@ const formNav = document.querySelector("#formNav")
 const cateNav = document.querySelector("#cateNav")
 const cartNav = document.querySelector("#cartNav")
 // شرط نویسی اگر در صفحه هوم بود
-if(window.location.href.includes("form.html")){
+if (window.location.href.includes("form.html")) {
     formNav.style.borderBottom = "3px solid white"
+}
+
+if (localStorage.getItem("newkalaEmail") && localStorage.getItem("newkalaPwd")) {
+    const formContainer = document.querySelector("#form-container")
+    const userInfo = document.getElementById("userInfo")
+    formContainer.style.display = "none"
+    const userEmail = document.createElement("span")
+    const goHome = document.createElement("button")
+    goHome.textContent = "برگشت به صفحه اصلی"
+    goHome.className = "goHomebtn"
+    goHome.addEventListener('click', () => {
+        window.location.href = "index.html"
+    })
+    userEmail.className = "emailSpan"
+    userEmail.textContent = localStorage.getItem("newkalaEmail")
+    userInfo.appendChild(userEmail)
+    userInfo.appendChild(goHome)
+    document.title = "نیوکالا"
+} else if (!localStorage.getItem("newkalaEmail") && !localStorage.getItem("newkalaPwd")) {
+    const formContainer = document.querySelector("#form-container")
+    const userInfo = document.getElementById("userInfo")
+    formContainer.style.display = "flex"
+    const userEmail = document.createElement("span")
+    const goHome = document.createElement("button")
+    userEmail.style.display = "none"
+    goHome.style.display = "none"
+    userInfo.style.display = "none"
+    document.title = "نیوکالا | ورود"
+
 }

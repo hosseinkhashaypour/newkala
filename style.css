@@ -200,10 +200,6 @@ body {
     padding: 10px 20px;
     transition: transform 1s;
   }
-  .all-products-logged:hover{
-    filter: grayscale(50%);
-    transform: scale(1.1);
-  }
   .all-images-logged{
     width: 50%;
     /* max-width: 50px; */
@@ -226,6 +222,12 @@ body {
     color: white;
     padding: 10px ;
     border-radius: 20px;
+  }
+  button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    right: 0;
   }
 }
 
