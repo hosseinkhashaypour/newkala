@@ -1,3 +1,8 @@
+const loader = document.querySelector("#loader")
+setTimeout(() => {
+    loader.style.display = "none"
+}, 3000);
+
 const forms = document.querySelector('form');
 forms.addEventListener('submit', (a) => {
     a.preventDefault();
@@ -16,14 +21,14 @@ const myApis = async (searchText = '') => {
     }
 };
 
-const initSwiper = async (searchText = '') => {
+const initProducts = async (searchText = '') => {
     const products = await myApis(searchText);
-    const swiperWrapper = document.querySelector('.swiper-wrapper');
-    swiperWrapper.innerHTML = ''; // پاک کردن اسلایدهای قبلی
+    const productsWrapper = document.querySelector('.products-wrapper');
+    productsWrapper.innerHTML = ''; // پاک کردن محصولات قبلی
     products.forEach(product => {
-        const slide = document.createElement('div');
-        slide.classList.add('swiper-slide');
-        slide.innerHTML = `
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product-item');
+        productDiv.innerHTML = `
             <div class="all-products">
                 <img class="product-image" src="${product.image}" alt="${product.title}">
                 <h3>${product.title}</h3>
@@ -31,13 +36,7 @@ const initSwiper = async (searchText = '') => {
                 <br>
             </div>
         `;
-        swiperWrapper.appendChild(slide);
-    });
-    new Swiper('.swiper-container', {
-        loop: true,
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        spaceBetween: 20,
+        productsWrapper.appendChild(productDiv);
     });
     const images = document.querySelectorAll('.product-image');
     images.forEach(image => {
@@ -83,7 +82,7 @@ const addOffproducts = async () => {
 const searchInput = document.getElementById("searchInput");
 searchInput.addEventListener('input', (e) => {
     const searchText = e.target.value.trim();
-    initSwiper(searchText);
+    initProducts(searchText);
 });
 
 // nav icons
@@ -100,9 +99,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 });
 userIcon.addEventListener('click', () => {
-        window.location.href = "form.html";
+    window.location.href = "form.html";
 });
-cartIcon.addEventListener("click" , ()=>{
+cartIcon.addEventListener("click", () => {
     window.location.href = "cart.html"
 })
 const startMins = 10;
@@ -121,13 +120,9 @@ function updateCountdown() {
     time--;
 }
 
-
-
 // show all products if logged in
 const allproducts = document.querySelector("#all-products")
-if (!localStorage.getItem("newkalaEmail")) {
-    allproducts.textContent = "برای دیدن باقی محصولات وارد حساب کاربری شوید";
-} else {
+if (!localStorage.getItem("newkalaEmail") || localStorage.getItem("newkalaEmail")) {
     fetch("https://fakestoreapi.com/products")
         .then(response => response.json())
         .then(data => {
@@ -135,7 +130,6 @@ if (!localStorage.getItem("newkalaEmail")) {
             data.forEach(product => {
                 const productDiv = document.createElement('div');
                 productDiv.className = 'all-products-logged';
-
 
                 const productImage = document.createElement('img');
                 productImage.src = product.image;
@@ -174,7 +168,7 @@ if (!localStorage.getItem("newkalaEmail")) {
         })
         .catch(error => {
             console.error('خطا در دریافت محصولات:', error);
-           allproducts.textContent = 'خطا در دریافت محصولات. لطفا دوباره تلاش کنید.';
+            allproducts.textContent = 'خطا در دریافت محصولات. لطفا دوباره تلاش کنید.';
         });
 }
 
@@ -184,24 +178,9 @@ const formNav = document.querySelector("#formNav")
 const cateNav = document.querySelector("#cateNav")
 const cartNav = document.querySelector("#cartNav")
 // شرط نویسی اگر در صفحه هوم بود
-if(window.location.href.includes("index.html")){
+if (window.location.href.includes("index.html")) {
     homeNav.style.borderBottom = "3px solid white"
 }
 
-
-// close console
-// document.addEventListener("copy" , (e)=>{
-//     e.preventDefault()
-// })
-// document.addEventListener("contextmenu" , (e)=>{
-//     e.preventDefault()
-// })
-// window.addEventListener("keydown" , (e)=>{
-//     if(e.key === "F12"){
-//         e.preventDefault()
-//     }
-// })
-
-initSwiper();
+initProducts();
 addOffproducts();
-myApis()

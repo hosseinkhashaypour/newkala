@@ -86,5 +86,4 @@ if (localStorage.getItem("newkalaEmail") && localStorage.getItem("newkalaPwd")) 
     goHome.style.display = "none"
     userInfo.style.display = "none"
     document.title = "نیوکالا | ورود"
-
 }
