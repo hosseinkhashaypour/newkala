@@ -2,7 +2,10 @@
 const homeIcon = document.querySelector(".home-icon");
 const userIcon = document.querySelector(".user-icon");
 const cartIcon = document.querySelector(".cart-icon");
-const categoryIcon = document.querySelector(".category-icon");
+const categoryIcon = document.querySelector(".categories-icon");
+categoryIcon.addEventListener('click' , ()=>{
+    window.location.href = "category.html"
+})
 window.addEventListener('DOMContentLoaded', (event) => {
     if (window.location.href.includes("form.html")) {
         userIcon.src = "user2.png"
