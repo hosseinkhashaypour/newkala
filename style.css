@@ -236,8 +236,8 @@ body {
     width: 100%;
     height: 100vh;
     z-index: 99999;  
-    /* object-fit: cover; */
-    inset: 0;
+    object-fit: cover;
+    /* inset: 0; */
   }
 }
 
@@ -399,5 +399,15 @@ body {
     color: white;
     padding: 10px ;
     border-radius: 20px;
+  }
+  .loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;  
+    object-fit: cover;
+    /* inset: 0; */
   }
 }

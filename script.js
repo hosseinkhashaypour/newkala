@@ -1,7 +1,7 @@
 const loader = document.querySelector("#loader")
 setTimeout(() => {
     loader.style.display = "none"
-}, 3000);
+}, 2000);
 
 const forms = document.querySelector('form');
 forms.addEventListener('submit', (a) => {
@@ -82,7 +82,7 @@ const addOffproducts = async () => {
 const searchInput = document.getElementById("searchInput");
 searchInput.addEventListener('input', (e) => {
     const searchText = e.target.value.trim();
-    initProducts(searchText);
+    myApis(searchText)
 });
 
 // nav icons
@@ -155,11 +155,20 @@ if (!localStorage.getItem("newkalaEmail") || localStorage.getItem("newkalaEmail"
                         price: product.price,
                         image: product.image
                     };
-
+                    
                     let cart = JSON.parse(localStorage.getItem('cart')) || [];
                     cart.push(productInfo);
                     localStorage.setItem('cart', JSON.stringify(cart));
                     alert(`${product.title} به سبد خرید افزوده شد.`);
+                    if(!localStorage.getItem('newkalaEmail')){
+                        Swal.fire({
+                            icon: "error",
+                            title: "خطا",
+                            text: "شما وارد حساب کاربری نشده اید",
+                            // footer: '<a href="#">Why do I have this issue?</a>'
+                          });
+                          localStorage.removeItem("cart")
+                    }
                 });
 
                 productDiv.appendChild(productImage);

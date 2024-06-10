@@ -218,3 +218,30 @@ img {
   object-fit: contain;
   aspect-ratio: 2/4;
 }
+
+
+/* responsive */
+
+@media(min-width:700px){
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #cartProducts , .savedProducts {
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    width: 40%;
+    flex-direction: column;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 5% !important;
+  }
+  img {
+    width: 200%;
+    object-fit: contain;
+    aspect-ratio: 2/4;
+  }
+}

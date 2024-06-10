@@ -67,6 +67,7 @@ if (localStorage.getItem("cart")) {
         });
         localStorage.removeItem("cart")
         location.reload()
+        window.location.href = "index.html"
     })
     saveBtnHtml.appendChild(buyBtn)
 }
